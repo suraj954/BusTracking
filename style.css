@@ -1,0 +1,3022 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0f23;
+    color: #ffffff;
+    overflow: hidden;
+    height: 100vh;
+}
+/* (Removed split view rules) */
+
+/* Login System */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+    padding: 2rem;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.login-header .logo i {
+    font-size: 3rem;
+    color: #4ade80;
+}
+
+.login-header .logo h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #4ade80, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-subtitle {
+    color: #a1a1aa;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* Login Tabs */
+.login-tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    gap: 0.5rem;
+}
+
+.login-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    color: #71717a;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.login-tab.active {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+    box-shadow: 0 2px 8px rgba(74, 222, 128, 0.2);
+}
+
+.login-tab:hover:not(.active) {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Login Panels */
+.login-panel {
+    display: none;
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.login-panel.active {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+}
+
+.login-panel h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.panel-description {
+    text-align: center;
+    color: #a1a1aa;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+}
+
+/* Method Tabs */
+.method-tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.25rem;
+    margin-bottom: 1.5rem;
+    gap: 0.25rem;
+}
+
+.method-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: none;
+    border: none;
+    color: #71717a;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.method-tab.active {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+}
+
+.method-tab:hover:not(.active) {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Method Content */
+.method-content {
+    display: none;
+}
+
+.method-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Login Forms */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.form-group input {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4ade80;
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #71717a;
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #a1a1aa;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #4ade80;
+}
+
+.forgot-link {
+    color: #4ade80;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+    color: #22d3ee;
+}
+
+/* Social Buttons */
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.social-btn.google {
+    border-color: #ea4335;
+    color: #ea4335;
+}
+
+.social-btn.google:hover {
+    background: rgba(234, 67, 53, 0.1);
+}
+
+.social-btn.facebook {
+    border-color: #1877f2;
+    color: #1877f2;
+}
+
+.social-btn.facebook:hover {
+    background: rgba(24, 119, 242, 0.1);
+}
+
+.social-btn.apple {
+    border-color: #000000;
+    color: #ffffff;
+}
+
+.social-btn.apple:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.social-divider {
+    position: relative;
+    text-align: center;
+    margin: 1.5rem 0;
+    color: #71717a;
+    font-size: 0.875rem;
+}
+
+.social-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-divider span {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0 1rem;
+}
+
+/* Login Footer */
+.login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+.login-footer a {
+    color: #4ade80;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.login-footer a:hover {
+    color: #22d3ee;
+}
+
+.demo-info {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #71717a;
+    font-style: italic;
+}
+
+/* Registration Modal Styles */
+.register-tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.25rem;
+    margin-bottom: 1.5rem;
+    gap: 0.25rem;
+}
+
+.register-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: none;
+    border: none;
+    color: #71717a;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.register-tab.active {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+}
+
+.register-tab:hover:not(.active) {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.register-panel {
+    display: none;
+}
+
+.register-panel.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.register-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+.register-footer a {
+    color: #4ade80;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.register-footer a:hover {
+    color: #22d3ee;
+}
+
+.terms-link {
+    color: #22d3ee;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.terms-link:hover {
+    color: #4ade80;
+}
+
+/* Button Full Width */
+.btn-full {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* User Info in Header */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+.user-info span {
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+}
+
+/* Header */
+.header {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: #4ade80;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #4ade80, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #4ade80, #22d3ee);
+    color: #000;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(74, 222, 128, 0.3);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    gap: 0;
+    height: calc(100vh - 80px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 450px;
+    min-width: 450px;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.03);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+    padding: 1.5rem;
+    flex-shrink: 0;
+}
+
+
+
+/* Right Side Sign In Panel */
+.right-signin-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.right-signin-panel.active {
+    transform: translateX(0);
+}
+
+/* Right panel overlay - doesn't affect main layout */
+
+.signin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.signin-header h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.toggle-signin-btn {
+    background: none;
+    border: none;
+    color: #a1a1aa;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.toggle-signin-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.signin-content {
+    padding: 2rem;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.signin-tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 0.25rem;
+    margin-bottom: 2rem;
+    gap: 0.25rem;
+}
+
+.signin-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: #a1a1aa;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.signin-tab:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.signin-tab.active {
+    background: #4ade80;
+    color: #ffffff;
+}
+
+.signin-panel {
+    display: none;
+}
+
+.signin-panel.active {
+    display: block;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.signin-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.signin-form label {
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.signin-form input {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.signin-form input:focus {
+    outline: none;
+    border-color: #4ade80;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.signin-form input::placeholder {
+    color: #71717a;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-footer a {
+    color: #4ade80;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+}
+
+.form-footer a:hover {
+    color: #22d3ee;
+}
+
+/* Sign In Toggle Button */
+.signin-toggle-btn {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #4ade80;
+    border: none;
+    color: #ffffff;
+    padding: 1rem 0.5rem;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    opacity: 0.9;
+}
+
+.signin-toggle-btn:hover {
+    background: #22d3ee;
+    padding-right: 1rem;
+}
+
+
+
+.sidebar-section {
+    margin-bottom: 2rem;
+}
+
+.sidebar-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #a1a1aa;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-section h3 i {
+    color: #4ade80;
+}
+
+/* GPS Tracking Styles */
+.gps-tracking-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.location-info {
+    margin-bottom: 1rem;
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.location-item i {
+    color: #4ade80;
+    font-size: 1.25rem;
+}
+
+.location-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.location-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.location-coords {
+    font-size: 0.75rem;
+    color: #a1a1aa;
+}
+
+.tracking-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Tracking Tab Styles */
+.tracking-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tracking-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-item i {
+    color: #4ade80;
+    font-size: 1.5rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #a1a1aa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.tracking-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.tracking-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid #4ade80;
+}
+
+.tracking-item.online {
+    border-left-color: #4ade80;
+}
+
+.tracking-item.offline {
+    border-left-color: #f87171;
+}
+
+.tracking-item.warning {
+    border-left-color: #fbbf24;
+}
+
+.tracking-bus-info {
+    flex: 1;
+}
+
+.tracking-bus-number {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+}
+
+.tracking-bus-route {
+    font-size: 0.875rem;
+    color: #a1a1aa;
+    margin-bottom: 0.25rem;
+}
+
+.tracking-bus-location {
+    font-size: 0.75rem;
+    color: #71717a;
+}
+
+.tracking-bus-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.tracking-status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: pulse 2s infinite;
+}
+
+.tracking-status-indicator.offline {
+    background: #f87171;
+    animation: none;
+}
+
+.tracking-status-indicator.warning {
+    background: #fbbf24;
+}
+
+.tracking-speed {
+    font-size: 0.75rem;
+    color: #a1a1aa;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Search */
+.search-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-right: 3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.875rem;
+}
+
+#searchInput::placeholder {
+    color: #71717a;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #4ade80;
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+}
+
+.search-btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #71717a;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Lists */
+.route-list, .arrivals-list, .stops-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.route-item, .arrival-item, .stop-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.route-item:hover, .arrival-item:hover, .stop-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.route-item.active {
+    background: rgba(74, 222, 128, 0.1);
+    border-color: #4ade80;
+}
+
+.route-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.route-number {
+    font-weight: 600;
+    color: #4ade80;
+    font-size: 1.125rem;
+}
+
+.route-status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.route-status.on-time {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.route-status.delayed {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.route-details {
+    font-size: 0.875rem;
+    color: #a1a1aa;
+    line-height: 1.4;
+}
+
+.arrival-time {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.stop-distance {
+    color: #71717a;
+    font-size: 0.75rem;
+}
+
+/* Map Container */
+.map-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: 0;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+}
+
+.map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    min-height: 60px;
+}
+
+.map-controls {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.map-info {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.875rem;
+    color: #a1a1aa;
+}
+
+.gps-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+.gps-status i {
+    color: #4ade80;
+}
+
+.gps-status.connected {
+    color: #4ade80;
+}
+
+.gps-status.error {
+    color: #f87171;
+}
+
+.vehicle-count, .last-update {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.vehicle-count i {
+    color: #4ade80;
+}
+
+#map {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 0;
+}
+
+/* Fullscreen map styles */
+.map-container:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 9999;
+}
+
+.map-container:fullscreen #map {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.map-container:-webkit-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 9999;
+}
+
+.map-container:-webkit-full-screen #map {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.map-container:-moz-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 9999;
+}
+
+.map-container:-moz-full-screen #map {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.map-container:-ms-fullscreen {
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 9999;
+}
+
+.map-container:-ms-fullscreen #map {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Fullscreen button styles */
+#fullscreenBtn.fullscreen-active {
+    background: #ef4444;
+    color: white;
+}
+
+#fullscreenBtn.fullscreen-active:hover {
+    background: #dc2626;
+}
+
+/* GPS Tracking Container Styles */
+.gps-tracking-container {
+    background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(34, 211, 238, 0.1) 100%);
+    border: 2px solid rgba(74, 222, 128, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.gps-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+.gps-status-display {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-label {
+    color: #a1a1aa;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-value {
+    color: #4ade80;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* Bus Distance Tracker Styles */
+.bus-distance-card {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%);
+    border: 2px solid rgba(251, 191, 36, 0.3);
+}
+
+.distance-tracker {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.distance-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.distance-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.bus-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bus-route-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.bus-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.bus-number {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.bus-route-name {
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+.bus-status {
+    color: #4ade80;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.distance-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.distance-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+.distance-unit {
+    color: #a1a1aa;
+    font-size: 0.75rem;
+}
+
+.distance-direction {
+    color: #4ade80;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Route Colors for Punjab Buses */
+.route-pb1 { background: #ff6b6b; } /* Red */
+.route-pb2 { background: #4ecdc4; } /* Teal */
+.route-pb3 { background: #45b7d1; } /* Blue */
+.route-pb4 { background: #96ceb4; } /* Green */
+.route-pb5 { background: #feca57; } /* Yellow */
+
+/* Bus Markers */
+.bus-marker-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: pulse 2s infinite;
+}
+
+.bus-marker-container i {
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.bus-number {
+    font-size: 8px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    line-height: 1;
+}
+
+.bus-status-indicator {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.bus-status-indicator.on-time {
+    background: #4ade80;
+    animation: pulse 2s infinite;
+}
+
+.bus-status-indicator.delayed {
+    background: #ef4444;
+    animation: pulse 1s infinite;
+}
+
+/* Route Labels */
+.route-label {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Bus Popup */
+.bus-popup {
+    min-width: 200px;
+    font-family: 'Inter', sans-serif;
+}
+
+.bus-popup h4 {
+    margin: 0 0 8px 0;
+    color: #1a1a2e;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.bus-popup p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.bus-popup .on-time {
+    color: #4ade80;
+    font-weight: 600;
+}
+
+.bus-popup .delayed {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+/* User Location Marker */
+.user-marker-container {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-marker-container i {
+    color: #4ade80;
+    font-size: 24px;
+    background: white;
+    border-radius: 50%;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    position: relative;
+}
+
+.location-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(74, 222, 128, 0.3);
+    border-radius: 50%;
+    animation: locationPulse 2s infinite;
+}
+
+@keyframes locationPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* User Popup */
+.user-popup {
+    min-width: 200px;
+    font-family: 'Inter', sans-serif;
+}
+
+.user-popup h4 {
+    margin: 0 0 8px 0;
+    color: #1a1a2e;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-popup p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.user-popup .live {
+    color: #4ade80;
+    font-weight: 600;
+}
+
+/* Bus Stop Markers */
+.stop-marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transform: rotate(-45deg);
+    position: relative;
+}
+
+.stop-marker i {
+    font-size: 14px;
+    transform: rotate(45deg);
+    margin-bottom: 2px;
+}
+
+.stop-number {
+    font-size: 8px;
+    transform: rotate(45deg);
+    line-height: 1;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Stop Popup */
+.stop-popup {
+    min-width: 200px;
+    font-family: 'Inter', sans-serif;
+}
+
+.stop-popup h4 {
+    margin: 0 0 8px 0;
+    color: #1a1a2e;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.stop-popup p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+/* Route Label Markers */
+.route-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
+    white-space: nowrap;
+}
+
+.route-label i {
+    font-size: 14px;
+}
+
+/* Map Layer Control */
+.leaflet-control-layers {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.leaflet-control-layers-toggle {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 8px !important;
+}
+
+/* Route Polylines */
+.route-pb1 {
+    stroke: #ff6b6b !important;
+    stroke-width: 6px !important;
+}
+
+.route-pb2 {
+    stroke: #4ecdc4 !important;
+    stroke-width: 6px !important;
+}
+
+.route-pb3 {
+    stroke: #45b7d1 !important;
+    stroke-width: 6px !important;
+}
+
+.route-pb4 {
+    stroke: #96ceb4 !important;
+    stroke-width: 6px !important;
+}
+
+.route-pb5 {
+    stroke: #feca57 !important;
+    stroke-width: 6px !important;
+}
+
+/* GPS Status */
+.gps-status.connected {
+    color: #4ade80;
+}
+
+.gps-status.disconnected {
+    color: #a1a1aa;
+}
+
+.gps-status.error {
+    color: #ef4444;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Favorites List Styles */
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.favorite-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.favorite-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-1px);
+}
+
+.favorite-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.favorite-name {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.875rem;
+}
+
+.favorite-type {
+    color: #a1a1aa;
+    font-size: 0.75rem;
+}
+
+.favorite-remove {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.favorite-remove:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Quick Actions Styles */
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Responsive GPS Tracking */
+@media (max-width: 768px) {
+    .gps-tracking-container {
+        margin-bottom: 0.75rem;
+        padding: 0.75rem;
+    }
+    
+    .gps-controls {
+        gap: 0.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .distance-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .bus-info {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .distance-info {
+        align-items: flex-start;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .bus-details {
+        flex: 1;
+    }
+    
+    .distance-value {
+        font-size: 1.1rem;
+    }
+}
+
+/* Bottom Panel */
+.bottom-panel {
+    height: 200px;
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.panel-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    border: none;
+    color: #71717a;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.tab-btn.active {
+    color: #4ade80;
+    border-bottom: 2px solid #4ade80;
+    background: rgba(74, 222, 128, 0.05);
+}
+
+.tab-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.panel-content {
+    height: calc(100% - 60px);
+    overflow-y: auto;
+}
+
+.tab-content {
+    display: none;
+    padding: 1.5rem;
+    height: 100%;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h4 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Schedule, Favorites, Alerts Lists */
+.schedule-list, .favorites-list, .alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.schedule-item, .favorite-item, .alert-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.schedule-time {
+    font-weight: 600;
+    color: #4ade80;
+}
+
+.schedule-route {
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+.alert-item {
+    border-left: 4px solid #f87171;
+}
+
+.alert-item.info {
+    border-left-color: #22d3ee;
+}
+
+.alert-item.warning {
+    border-left-color: #fbbf24;
+}
+
+.alert-item.error {
+    border-left-color: #f87171;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #1a1a2e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #71717a;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.setting-group {
+    margin-bottom: 1.5rem;
+}
+
+.setting-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.setting-group select,
+.setting-group input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.875rem;
+}
+
+.setting-group select:focus,
+.setting-group input[type="text"]:focus {
+    outline: none;
+    border-color: #4ade80;
+}
+
+.setting-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 3000;
+    backdrop-filter: blur(5px);
+}
+
+.loading-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-spinner {
+    text-align: center;
+    color: #ffffff;
+}
+
+.loading-spinner i {
+    font-size: 3rem;
+    color: #4ade80;
+    margin-bottom: 1rem;
+}
+
+.loading-spinner p {
+    color: #a1a1aa;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 400px;
+        min-width: 400px;
+        max-width: 400px;
+    }
+    
+    .header-content {
+        padding: 0 1rem;
+    }
+}
+
+/* Desktop: maintain proper proportions */
+@media (min-width: 1025px) {
+    .sidebar {
+        width: 450px;
+        min-width: 450px;
+        max-width: 450px;
+    }
+    
+    .map-container {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1rem;
+    }
+    
+    .login-header .logo h1 {
+        font-size: 2rem;
+    }
+    
+    .login-tabs {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .login-tab {
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .login-panel {
+        padding: 1.5rem;
+    }
+    
+    .method-tabs {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .method-tab {
+        padding: 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    .social-buttons {
+        gap: 0.75rem;
+    }
+    
+    .social-btn {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .app-container {
+        flex-direction: column;
+    }
+    
+    .main-content {
+        flex-direction: column;
+        height: auto;
+        gap: 0;
+    }
+    
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 40vh;
+        order: 2;
+        overflow-y: auto;
+    }
+    
+    .map-container {
+        order: 1;
+        height: 60vh;
+        min-height: 60vh;
+        flex: none;
+        margin: 0;
+    }
+    
+    .bottom-panel {
+        order: 3;
+        height: 150px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .map-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .map-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .panel-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 120px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    /* Allow page to scroll on very small screens */
+    body {
+        overflow: auto;
+        height: auto;
+    }
+    
+    .header {
+        padding: 1rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+    
+    .sidebar {
+        padding: 1rem;
+    }
+    
+    .map-header {
+        padding: 1rem;
+    }
+    
+    .tab-content {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    /* Right sign-in panel becomes full width */
+    .right-signin-panel {
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .signin-toggle-btn {
+        top: auto;
+        bottom: 20px;
+        transform: none;
+    }
+
+    /* Map header controls wrap nicely */
+    .map-controls {
+        flex-wrap: wrap;
+    }
+    .map-info {
+        gap: 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    /* Bottom panel more compact */
+    .bottom-panel {
+        height: 130px;
+    }
+}
+
+/* Extra small devices refinements */
+@media (max-width: 360px) {
+    .btn {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.8rem;
+    }
+    .btn-sm {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.7rem;
+    }
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+    .map-container {
+        height: 75vh;
+        flex: 1;
+    }
+    .panel-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .ticket-modal {
+        max-width: 100%;
+    }
+}
+
+/* Medium devices tweaks */
+@media (max-width: 1024px) {
+    .map-info {
+        gap: 1rem;
+    }
+}
+
+/* Safe area support for iOS */
+:root {
+    --safe-bottom: env(safe-area-inset-bottom, 0);
+}
+.bottom-panel {
+    padding-bottom: var(--safe-bottom);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.route-item, .arrival-item, .stop-item {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading-spinner i {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: #71717a;
+}
+
+.text-success {
+    color: #4ade80;
+}
+
+.text-warning {
+    color: #fbbf24;
+}
+
+.text-danger {
+    color: #f87171;
+}
+
+/* Ticket Booking Modal Styles */
+.ticket-modal {
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.ticket-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ticket-section h4 {
+    color: #4ade80;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Route Selection */
+.route-selection {
+    display: grid;
+    gap: 1rem;
+}
+
+.route-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.route-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+.route-card.active {
+    border-color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+}
+
+.route-info {
+    flex: 1;
+}
+
+.route-number {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.route-name {
+    color: #e4e4e7;
+    margin-bottom: 0.25rem;
+}
+
+.route-stops {
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+.route-price {
+    text-align: right;
+}
+
+.route-price .price {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4ade80;
+}
+
+.route-price .duration {
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+/* Journey Form */
+.journey-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: #e4e4e7;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4ade80;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Passenger Details */
+.passenger-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.passenger-form {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.passenger-form h5 {
+    color: #4ade80;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+/* Fare Breakdown */
+.fare-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.fare-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fare-item.total {
+    border-bottom: none;
+    border-top: 2px solid rgba(74, 222, 128, 0.3);
+    padding-top: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #4ade80;
+}
+
+/* Payment Methods */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.payment-tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.25rem;
+    gap: 0.25rem;
+}
+
+.payment-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: none;
+    border: none;
+    color: #71717a;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.payment-tab.active {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+}
+
+.payment-content {
+    display: none;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.payment-content.active {
+    display: block;
+}
+
+/* Digital Wallet */
+.wallet-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.wallet-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: #e4e4e7;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wallet-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+.wallet-option.active {
+    border-color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+}
+
+/* Cash Payment */
+.cash-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 8px;
+    color: #fbbf24;
+}
+
+.cash-info i {
+    font-size: 1.25rem;
+    margin-top: 0.125rem;
+}
+
+.cash-info p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Booking Summary */
+.booking-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.summary-item.total {
+    border-bottom: none;
+    border-top: 2px solid rgba(74, 222, 128, 0.3);
+    padding-top: 1rem;
+    font-weight: 700;
+    color: #4ade80;
+}
+
+/* Modal Footer */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Ticket Notification */
+.ticket-notification {
+    max-width: 400px;
+    white-space: normal;
+    line-height: 1.6;
+}
+
+.ticket-notification h4 {
+    margin-bottom: 1rem;
+    color: #4ade80;
+}
+
+.ticket-notification p {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design for Ticket Modal */
+@media (max-width: 768px) {
+    .ticket-modal {
+        margin: 1rem;
+        max-width: calc(100vw - 2rem);
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .wallet-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .route-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .route-price {
+        text-align: left;
+    }
+}
+
+/* Available Buses */
+.available-buses {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bus-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bus-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+.bus-card.active {
+    border-color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+}
+
+.bus-info {
+    flex: 1;
+}
+
+.bus-number {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #4ade80;
+}
+
+.bus-route {
+    color: #e4e4e7;
+    margin-bottom: 0.25rem;
+}
+
+.bus-timing {
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+.bus-price {
+    text-align: right;
+}
+
+.bus-price .price {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4ade80;
+}
+
+.bus-price .duration {
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+/* Seat Selection */
+.seat-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.seat-map {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.seat-available {
+    background: #4ade80;
+    color: #000;
+    border-color: #4ade80;
+}
+
+.seat-available:hover {
+    background: #22c55e;
+    transform: scale(1.05);
+}
+
+.seat-selected {
+    background: #3b82f6;
+    color: #fff;
+    border-color: #3b82f6;
+}
+
+.seat-occupied {
+    background: #ef4444;
+    color: #fff;
+    border-color: #ef4444;
+    cursor: not-allowed;
+}
+
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+.seat-available, .seat-selected, .seat-occupied {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Success Modal */
+.success-modal {
+    max-width: 500px;
+    text-align: center;
+}
+
+.success-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #4ade80;
+    margin-bottom: 1rem;
+}
+
+.success-content h4 {
+    color: #4ade80;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.booking-details {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 100%;
+    text-align: left;
+}
+
+.booking-details h5 {
+    color: #4ade80;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.booking-details .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.booking-details .detail-row:last-child {
+    border-bottom: none;
+    font-weight: 600;
+    color: #4ade80;
+}
+
+.success-actions {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.success-actions .btn {
+    flex: 1;
+}
+
+/* Tickets List */
+.tickets-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tickets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ticket-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.ticket-item .left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.ticket-route {
+    font-weight: 600;
+}
+
+.ticket-meta {
+    color: #a1a1aa;
+    font-size: 0.875rem;
+}
+
+.ticket-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #e4e4e7;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ticket-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.ticket-details .detail {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.ticket-details .detail h5 {
+    margin-bottom: 0.5rem;
+    color: #4ade80;
+}
+
+@media (max-width: 768px) {
+    .ticket-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    .ticket-actions {
+        width: 100%;
+    }
+    .ticket-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Feedback */
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feedback-form textarea {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #ffffff;
+}
+
+.star-rating {
+    display: inline-flex;
+    gap: 0.25rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: #a1a1aa;
+}
+
+.star-rating i.active,
+.star-rating i:hover,
+.star-rating i:hover ~ i {
+    color: #fbbf24;
+}
+
+.feedback-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.feedback-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+}
+
+.feedback-item .meta {
+    display: flex;
+    justify-content: space-between;
+    color: #a1a1aa;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.feedback-item .text {
+    white-space: pre-wrap;
+}

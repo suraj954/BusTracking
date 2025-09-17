@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punjab Bus Tracker - Real-Time GPS Tracking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Login System -->
+    <div class="login-container" id="loginContainer">
+        <div class="login-header">
+            <div class="logo">
+                <i class="fas fa-bus"></i>
+                <h1>Punjab Bus Tracker</h1>
+            </div>
+            <p class="login-subtitle">Choose your login method</p>
+        </div>
+
+        <div class="login-tabs">
+            <button class="login-tab active" data-tab="user">
+                <i class="fas fa-user"></i>
+                User Login
+            </button>
+            <button class="login-tab" data-tab="driver">
+                <i class="fas fa-steering-wheel"></i>
+                Driver Login
+            </button>
+            <button class="login-tab" data-tab="admin">
+                <i class="fas fa-shield-alt"></i>
+                Admin Login
+            </button>
+        </div>
+
+        <!-- User Login Panel -->
+        <div class="login-panel active" id="userPanel">
+            <h2>User Login</h2>
+            <p class="panel-description">Access real-time bus tracking and route information</p>
+            
+            <div class="login-methods">
+                <div class="method-tabs">
+                    <button class="method-tab active" data-method="email">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </button>
+                    <button class="method-tab" data-method="mobile">
+                        <i class="fas fa-mobile-alt"></i>
+                        Mobile
+                    </button>
+                    <button class="method-tab" data-method="social">
+                        <i class="fas fa-share-alt"></i>
+                        Social Media
+                    </button>
+                </div>
+
+                <!-- Email Login -->
+                <div class="method-content active" id="emailMethod">
+                    <form class="login-form" id="emailForm">
+                        <div class="form-group">
+                            <label for="userEmail">Email Address</label>
+                            <input type="email" id="userEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userPassword">Password</label>
+                            <input type="password" id="userPassword" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="rememberUser">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-link">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Mobile Login -->
+                <div class="method-content" id="mobileMethod">
+                    <form class="login-form" id="mobileForm">
+                        <div class="form-group">
+                            <label for="userMobile">Mobile Number</label>
+                            <input type="tel" id="userMobile" placeholder="Enter your mobile number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userOTP">OTP</label>
+                            <input type="text" id="userOTP" placeholder="Enter 6-digit OTP" maxlength="6" required>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-full" id="sendOTP">
+                            <i class="fas fa-paper-plane"></i>
+                            Send OTP
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Verify & Login
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Social Media Login -->
+                <div class="method-content" id="socialMethod">
+                    <div class="social-buttons">
+                        <button class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </button>
+                        <button class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Continue with Facebook
+                        </button>
+                        <button class="social-btn apple">
+                            <i class="fab fa-apple"></i>
+                            Continue with Apple
+                        </button>
+                    </div>
+                    <div class="social-divider">
+                        <span>or</span>
+                    </div>
+                    <form class="login-form" id="socialForm">
+                        <div class="form-group">
+                            <label for="socialEmail">Email Address</label>
+                            <input type="email" id="socialEmail" placeholder="Enter your email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Continue
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Driver Login Panel -->
+        <div class="login-panel" id="driverPanel">
+            <h2>Driver Login</h2>
+            <p class="panel-description">Access your bus route and passenger information</p>
+            
+            <form class="login-form" id="driverForm">
+                <div class="form-group">
+                    <label for="busNumber">Bus Number</label>
+                    <input type="text" id="busNumber" placeholder="Enter bus number (e.g., BUS-001)" required>
+                </div>
+                <div class="form-group">
+                    <label for="driverName">Driver Name</label>
+                    <input type="text" id="driverName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="driverPassword">Password</label>
+                    <input type="password" id="driverPassword" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberDriver">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-steering-wheel"></i>
+                    Driver Login
+                </button>
+            </form>
+        </div>
+
+        <!-- Admin Login Panel -->
+        <div class="login-panel" id="adminPanel">
+            <h2>Admin Login</h2>
+            <p class="panel-description">Access system administration and analytics</p>
+            
+            <form class="login-form" id="adminForm">
+                <div class="form-group">
+                    <label for="adminUsername">Username</label>
+                    <input type="text" id="adminUsername" placeholder="Enter admin username" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter admin password" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminCode">Security Code</label>
+                    <input type="text" id="adminCode" placeholder="Enter 2FA code" maxlength="6">
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberAdmin">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Reset Access</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-shield-alt"></i>
+                    Admin Login
+                </button>
+            </form>
+        </div>
+
+        <div class="login-footer">
+            <p>Don't have an account? <a href="#" class="register-link" id="showRegisterBtn">Register here</a></p>
+            <p class="demo-info">Demo Credentials: user@demo.com / password123</p>
+            <p class="demo-info">Location: Punjab Bus Routes (5 Routes Available)</p>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Account</h3>
+                <button class="close-btn" id="closeRegisterBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="register-tabs">
+                    <button class="register-tab active" data-register="user">
+                        <i class="fas fa-user"></i>
+                        User Account
+                    </button>
+                    <button class="register-tab" data-register="driver">
+                        <i class="fas fa-steering-wheel"></i>
+                        Driver Account
+                    </button>
+                </div>
+
+                <!-- User Registration Form -->
+                <div class="register-panel active" id="userRegisterPanel">
+                    <form class="register-form" id="userRegisterForm">
+                        <div class="form-group">
+                            <label for="regUserName">Full Name</label>
+                            <input type="text" id="regUserName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regUserEmail">Email Address</label>
+                            <input type="email" id="regUserEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regUserMobile">Mobile Number</label>
+                            <input type="tel" id="regUserMobile" placeholder="Enter your mobile number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regUserPassword">Password</label>
+                            <input type="password" id="regUserPassword" placeholder="Create a password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regUserConfirmPassword">Confirm Password</label>
+                            <input type="password" id="regUserConfirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeTerms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" class="terms-link">Terms & Conditions</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-user-plus"></i>
+                            Create Account
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Driver Registration Form -->
+                <div class="register-panel" id="driverRegisterPanel">
+                    <form class="register-form" id="driverRegisterForm">
+                        <div class="form-group">
+                            <label for="regDriverName">Full Name</label>
+                            <input type="text" id="regDriverName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regDriverEmail">Email Address</label>
+                            <input type="email" id="regDriverEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regDriverMobile">Mobile Number</label>
+                            <input type="tel" id="regDriverMobile" placeholder="Enter your mobile number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regDriverLicense">Driver License Number</label>
+                            <input type="text" id="regDriverLicense" placeholder="Enter your license number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regDriverExperience">Years of Experience</label>
+                            <select id="regDriverExperience" required>
+                                <option value="">Select experience</option>
+                                <option value="0-1">0-1 years</option>
+                                <option value="1-3">1-3 years</option>
+                                <option value="3-5">3-5 years</option>
+                                <option value="5+">5+ years</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="regDriverPassword">Password</label>
+                            <input type="password" id="regDriverPassword" placeholder="Create a password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regDriverConfirmPassword">Confirm Password</label>
+                            <input type="password" id="regDriverConfirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeDriverTerms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" class="terms-link">Terms & Conditions</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-steering-wheel"></i>
+                            Register as Driver
+                        </button>
+                    </form>
+                </div>
+
+                <div class="register-footer">
+                    <p>Already have an account? <a href="#" class="login-link" id="backToLoginBtn">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application (Hidden initially) -->
+    <div class="app-container hidden" id="appContainer">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-bus"></i>
+                    <h1>Punjab Bus Tracker</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="user-info">
+                        <span id="currentUser">Welcome, User</span>
+                        <button class="btn btn-secondary" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                    <button class="btn btn-secondary" id="refreshBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                    <button class="btn btn-primary" id="settingsBtn">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Map Container (Right Side) -->
+            <section class="map-container">
+                <div class="map-header">
+                    <div class="map-controls">
+                        <button class="btn btn-sm btn-secondary" id="centerMapBtn">
+                            <i class="fas fa-crosshairs"></i>
+                            Center
+                        </button>
+                        <button class="btn btn-sm btn-secondary" id="fullscreenBtn">
+                            <i class="fas fa-expand"></i>
+                            Fullscreen
+                        </button>
+                        <button class="btn btn-sm btn-primary" id="getLocationBtn">
+                            <i class="fas fa-location-arrow"></i>
+                            My Location
+                        </button>
+                        <button class="btn btn-sm btn-success" id="trackBusBtn">
+                            <i class="fas fa-bus"></i>
+                            Track Bus
+                        </button>
+                        <button class="btn btn-sm btn-primary" id="bookTicketBtn">
+                            <i class="fas fa-ticket-alt"></i>
+                            Book Ticket
+                        </button>
+                    </div>
+                    <div class="map-info">
+                        <span class="vehicle-count">
+                            <i class="fas fa-bus"></i>
+                            <span id="activeVehicles">0</span> active vehicles
+                        </span>
+                        <span class="last-update">
+                            Last updated: <span id="lastUpdate">--</span>
+                        </span>
+                        <span class="gps-status" id="gpsStatus">
+                            <i class="fas fa-satellite"></i>
+                            GPS: <span id="gpsStatusText">Initializing...</span>
+                        </span>
+                    </div>
+                </div>
+                <div id="map"></div>
+            </section>
+
+            <!-- Sidebar (Left Side) -->
+            <aside class="sidebar">
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-satellite"></i> GPS Tracking</h3>
+                    <div class="gps-tracking-container">
+                        <div class="location-info">
+                            <div class="location-item">
+                                <i class="fas fa-user-circle"></i>
+                                <div class="location-details">
+                                    <span class="location-label">Your Location</span>
+                                    <span class="location-coords" id="userLocationCoords">Getting location...</span>
+                                </div>
+                            </div>
+                            <div class="location-item">
+                                <i class="fas fa-bus"></i>
+                                <div class="location-details">
+                                    <span class="location-label">Nearest Bus</span>
+                                    <span class="location-coords" id="nearestBusInfo">Searching...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tracking-controls">
+                            <button class="btn btn-sm btn-primary btn-full" id="startTrackingBtn">
+                                <i class="fas fa-play"></i>
+                                Start Tracking
+                            </button>
+                            <button class="btn btn-sm btn-secondary btn-full" id="stopTrackingBtn" style="display: none;">
+                                <i class="fas fa-stop"></i>
+                                Stop Tracking
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-search"></i> Search</h3>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search routes, stops, or buses...">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-route"></i> Punjab Bus Routes</h3>
+                    <div class="route-list" id="routeList">
+                        <!-- Routes will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-bus"></i> Live Bus Status</h3>
+                    <div class="vehicles-list" id="vehiclesList">
+                        <!-- Live vehicles will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-clock"></i> Live Arrivals</h3>
+                    <div class="arrivals-list" id="arrivalsList">
+                        <!-- Live arrivals will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Nearby Stops</h3>
+                    <div class="stops-list" id="stopsList">
+                        <!-- Nearby stops will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-satellite-dish"></i> Punjab GPS Tracking</h3>
+                    <div class="gps-tracking-container">
+                        <div class="gps-controls">
+                            <button class="btn btn-sm btn-primary btn-full" id="startPunjabTracking">
+                                <i class="fas fa-play"></i> Start GPS
+                            </button>
+                            <button class="btn btn-sm btn-secondary btn-full" id="stopPunjabTracking" style="display: none;">
+                                <i class="fas fa-stop"></i> Stop GPS
+                            </button>
+                        </div>
+                        <div class="gps-status-display">
+                            <div class="status-item">
+                                <span class="status-label">GPS Status:</span>
+                                <span class="status-value" id="gpsStatusValue">Ready</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Your Location:</span>
+                                <span class="status-value" id="userLocationDisplay">Getting location...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-route"></i> Bus Distance Tracker</h3>
+                    <div class="distance-tracker" id="distanceTracker">
+                        <!-- Distance tracking will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-heart"></i> Favorites</h3>
+                    <div class="favorites-list" id="favoritesList">
+                        <!-- Favorites will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="btn btn-sm btn-primary btn-full" id="bookTicketBtn">
+                            <i class="fas fa-ticket-alt"></i> Book Ticket
+                        </button>
+                        <button class="btn btn-sm btn-success btn-full" id="trackBusBtn">
+                            <i class="fas fa-bus"></i> Track Bus
+                        </button>
+                        <button class="btn btn-sm btn-info btn-full" id="reportIssueBtn">
+                            <i class="fas fa-exclamation-triangle"></i> Report Issue
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Bottom Panel -->
+            <section class="bottom-panel">
+                <div class="panel-tabs">
+                    <button class="tab-btn active" data-tab="schedule">
+                        <i class="fas fa-calendar"></i>
+                        Schedule
+                    </button>
+                    <button class="tab-btn" data-tab="tracking">
+                        <i class="fas fa-satellite"></i>
+                        Live Tracking
+                    </button>
+                    <button class="tab-btn" data-tab="favorites">
+                        <i class="fas fa-heart"></i>
+                        Favorites
+                    </button>
+                    <button class="tab-btn" data-tab="alerts">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Alerts
+                    </button>
+                    <button class="tab-btn" data-tab="tickets">
+                        <i class="fas fa-ticket-alt"></i>
+                        Tickets
+                    </button>
+                    <button class="tab-btn" data-tab="feedback">
+                        <i class="fas fa-star"></i>
+                        Feedback
+                    </button>
+                </div>
+                <div class="panel-content">
+                    <div class="tab-content active" id="scheduleTab">
+                        <div class="schedule-container">
+                            <h4>Today's Schedule</h4>
+                            <div class="schedule-list" id="scheduleList">
+                                <!-- Schedule will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="trackingTab">
+                        <div class="tracking-container">
+                            <h4>Real-Time Bus Tracking</h4>
+                            <div class="tracking-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-bus"></i>
+                                    <span class="stat-label">Active Buses</span>
+                                    <span class="stat-value" id="activeBusesCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-route"></i>
+                                    <span class="stat-label">Routes</span>
+                                    <span class="stat-value" id="activeRoutesCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span class="stat-label">Update Rate</span>
+                                    <span class="stat-value" id="updateRate">5s</span>
+                                </div>
+                            </div>
+                            <div class="tracking-list" id="trackingList">
+                                <!-- Live tracking data will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="favoritesTab">
+                        <div class="favorites-container">
+                            <h4>Favorite Routes</h4>
+                            <div class="favorites-list" id="favoritesList">
+                                <!-- Favorites will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="alertsTab">
+                        <div class="alerts-container">
+                            <h4>Service Alerts</h4>
+                            <div class="alerts-list" id="alertsList">
+                                <!-- Alerts will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="ticketsTab">
+                        <div class="tickets-container">
+                            <h4>Your Tickets</h4>
+                            <div class="tickets-list" id="ticketsList">
+                                <!-- Tickets will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="feedbackTab">
+                        <div class="feedback-container">
+                            <h4>Rate Your Bus Service</h4>
+                            <form id="feedbackForm" class="feedback-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Select Bus</label>
+                                        <select id="feedbackBus" required></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Rating</label>
+                                        <div class="star-rating" id="starRating" data-value="0">
+                                            <i class="far fa-star" data-rate="1"></i>
+                                            <i class="far fa-star" data-rate="2"></i>
+                                            <i class="far fa-star" data-rate="3"></i>
+                                            <i class="far fa-star" data-rate="4"></i>
+                                            <i class="far fa-star" data-rate="5"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Feedback</label>
+                                    <textarea id="feedbackText" rows="3" placeholder="Share your experience (optional)"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Submit
+                                </button>
+                            </form>
+                            <div class="feedback-list" id="feedbackList">
+                                <!-- Feedback items will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="close-btn" id="closeSettingsBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label>Update Frequency</label>
+                    <select id="updateFrequency">
+                        <option value="5">5 seconds</option>
+                        <option value="10" selected>10 seconds</option>
+                        <option value="30">30 seconds</option>
+                        <option value="60">1 minute</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>Default Map Center</label>
+                    <input type="text" id="defaultLocation" placeholder="Enter city name" value="Greater Noida, India">
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="notificationsEnabled">
+                        Enable notifications
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading real-time data...</p>
+        </div>
+    </div>
+
+    <!-- Ticket Booking Modal -->
+    <div class="modal" id="ticketModal">
+        <div class="modal-content ticket-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-ticket-alt"></i> Book Bus Ticket</h3>
+                <button class="close-btn" id="closeTicketBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Route Selection -->
+                <div class="ticket-section">
+                    <h4>Select Route</h4>
+                    <div class="route-selection" id="routeSelection">
+                        <!-- Routes will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Journey Details -->
+                <div class="ticket-section">
+                    <h4>Journey Details</h4>
+                    <div class="journey-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Pickup Point</label>
+                                <select id="fromStop" required>
+                                    <option value="">Select pickup point</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Drop Point</label>
+                                <select id="toStop" required>
+                                    <option value="">Select drop point</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Date of Journey</label>
+                                <input type="date" id="journeyDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Time</label>
+                                <select id="journeyTime" required>
+                                    <option value="">Select time</option>
+                                    <option value="06:00">06:00 AM</option>
+                                    <option value="08:00">08:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="18:00">06:00 PM</option>
+                                    <option value="20:00">08:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Number of Passengers</label>
+                                <select id="passengerCount" required>
+                                    <option value="1">1 Passenger</option>
+                                    <option value="2">2 Passengers</option>
+                                    <option value="3">3 Passengers</option>
+                                    <option value="4">4 Passengers</option>
+                                    <option value="5">5 Passengers</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Seat Type</label>
+                                <select id="seatType" required>
+                                    <option value="general">General</option>
+                                    <option value="premium">Premium (+₹50)</option>
+                                    <option value="luxury">Luxury (+₹100)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Buses -->
+                <div class="ticket-section">
+                    <h4>Available Buses</h4>
+                    <div class="available-buses" id="availableBuses">
+                        <!-- Available buses will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Seat Selection -->
+                <div class="ticket-section">
+                    <h4>Choose Your Seat</h4>
+                    <div class="seat-selection" id="seatSelection">
+                        <div class="seat-map" id="seatMap">
+                            <!-- Seat grid will be populated by JavaScript -->
+                        </div>
+                        <div class="seat-legend">
+                            <div class="legend-item">
+                                <div class="seat-available"></div>
+                                <span>Available</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="seat-selected"></div>
+                                <span>Selected</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="seat-occupied"></div>
+                                <span>Occupied</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passenger Details -->
+                <div class="ticket-section">
+                    <h4>Passenger Details</h4>
+                    <div class="passenger-details" id="passengerDetails">
+                        <!-- Passenger forms will be generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Fare Calculation -->
+                <div class="ticket-section">
+                    <h4>Fare Details</h4>
+                    <div class="fare-breakdown" id="fareBreakdown">
+                        <div class="fare-item">
+                            <span>Base Fare:</span>
+                            <span id="baseFare">₹0</span>
+                        </div>
+                        <div class="fare-item">
+                            <span>Seat Upgrade:</span>
+                            <span id="seatUpgrade">₹0</span>
+                        </div>
+                        <div class="fare-item">
+                            <span>Taxes & Charges:</span>
+                            <span id="taxes">₹0</span>
+                        </div>
+                        <div class="fare-item total">
+                            <span>Total Amount:</span>
+                            <span id="totalFare">₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="ticket-section">
+                    <h4>Payment Method</h4>
+                    <div class="payment-methods">
+                        <div class="payment-tabs">
+                            <button class="payment-tab active" data-method="credit">
+                                <i class="fas fa-credit-card"></i>
+                                Credit Card
+                            </button>
+                            <button class="payment-tab" data-method="debit">
+                                <i class="fas fa-credit-card"></i>
+                                Debit Card
+                            </button>
+                            <button class="payment-tab" data-method="digital">
+                                <i class="fas fa-wallet"></i>
+                                Digital Payment
+                            </button>
+                            <button class="payment-tab" data-method="cash">
+                                <i class="fas fa-money-bill-wave"></i>
+                                Cash Payment
+                            </button>
+                        </div>
+
+                        <!-- Credit Card Payment -->
+                        <div class="payment-content active" id="creditPayment">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Card Number</label>
+                                    <input type="text" id="creditCardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Card Holder Name</label>
+                                    <input type="text" id="creditCardHolderName" placeholder="Enter card holder name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Expiry Date</label>
+                                    <input type="text" id="creditCardExpiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="password" id="creditCardCVV" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Debit Card Payment -->
+                        <div class="payment-content" id="debitPayment">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Card Number</label>
+                                    <input type="text" id="debitCardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Card Holder Name</label>
+                                    <input type="text" id="debitCardHolderName" placeholder="Enter card holder name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Expiry Date</label>
+                                    <input type="text" id="debitCardExpiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="password" id="debitCardCVV" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Digital Payment -->
+                        <div class="payment-content" id="digitalPayment">
+                            <div class="wallet-options">
+                                <button class="wallet-option" data-wallet="paytm">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    Paytm
+                                </button>
+                                <button class="wallet-option" data-wallet="phonepe">
+                                    <i class="fas fa-phone"></i>
+                                    PhonePe
+                                </button>
+                                <button class="wallet-option" data-wallet="gpay">
+                                    <i class="fas fa-google"></i>
+                                    Google Pay
+                                </button>
+                                <button class="wallet-option" data-wallet="amazon">
+                                    <i class="fab fa-amazon"></i>
+                                    Amazon Pay
+                                </button>
+                            </div>
+                            <div class="form-group">
+                                <label>Mobile Number</label>
+                                <input type="tel" id="digitalMobile" placeholder="Enter mobile number">
+                            </div>
+                        </div>
+
+                        <!-- Cash Payment -->
+                        <div class="payment-content" id="cashPayment">
+                            <div class="cash-info">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Pay the fare amount to the conductor when boarding the bus. Keep this ticket for verification.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Summary -->
+                <div class="ticket-section">
+                    <h4>Booking Summary</h4>
+                    <div class="booking-summary" id="bookingSummary">
+                        <!-- Summary will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelTicketBtn">Cancel</button>
+                <button class="btn btn-primary" id="confirmBookingBtn">
+                    <i class="fas fa-credit-card"></i>
+                    Confirm & Pay
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Toggle Button -->
+    <button class="signin-toggle-btn" id="signinToggleBtn">
+        <i class="fas fa-sign-in-alt"></i>
+    </button>
+
+    <!-- Right Side Sign In Panel (visible on home page too) -->
+    <aside class="right-signin-panel">
+        <div class="signin-header">
+            <h3><i class="fas fa-sign-in-alt"></i> Sign In</h3>
+            <button class="toggle-signin-btn" id="toggleSigninBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="signin-content">
+            <div class="signin-tabs">
+                <button class="signin-tab active" data-signin="user">
+                    <i class="fas fa-user"></i>
+                    User
+                </button>
+                <button class="signin-tab" data-signin="driver">
+                    <i class="fas fa-steering-wheel"></i>
+                    Driver
+                </button>
+                <button class="signin-tab" data-signin="admin">
+                    <i class="fas fa-shield-alt"></i>
+                    Admin
+                </button>
+            </div>
+
+            <!-- User Sign In -->
+            <div class="signin-panel active" id="rightUserPanel">
+                <form class="signin-form" id="rightUserForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="rightUserEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="rightUserPassword" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </button>
+                    <div class="form-footer">
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                        <a href="#" class="register-link" id="rightRegisterLink">Create Account</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Driver Sign In -->
+            <div class="signin-panel" id="rightDriverPanel">
+                <form class="signin-form" id="rightDriverForm">
+                    <div class="form-group">
+                        <label>Driver Name</label>
+                        <input type="text" id="rightDriverName" placeholder="Enter driver name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="rightDriverPassword" placeholder="Enter password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-steering-wheel"></i>
+                        Driver Sign In
+                    </button>
+                    <div class="form-footer">
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                        <a href="#" class="register-link" id="rightDriverRegisterLink">Register Driver</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Admin Sign In -->
+            <div class="signin-panel" id="rightAdminPanel">
+                <form class="signin-form" id="rightAdminForm">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="rightAdminUsername" placeholder="Enter username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="rightAdminPassword" placeholder="Enter password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-shield-alt"></i>
+                        Admin Sign In
+                    </button>
+                    <div class="form-footer">
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                        <a href="#" class="register-link" id="rightAdminRegisterLink">Admin Access</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Ticket Details Modal -->
+    <div class="modal" id="ticketDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-receipt"></i> Ticket Details</h3>
+                <button class="close-btn" id="closeTicketDetailsBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ticket-details" id="ticketDetailsBody">
+                    <!-- Details populated by JavaScript -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closeTicketDetailsBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Success Modal -->
+    <div class="modal" id="bookingSuccessModal">
+        <div class="modal-content success-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-check-circle"></i> Booking Successful!</h3>
+                <button class="close-btn" id="closeSuccessBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="success-content">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4>You have successfully booked the seat in the available bus!</h4>
+                    <div class="booking-details" id="bookingSuccessDetails">
+                        <!-- Booking details will be populated by JavaScript -->
+                    </div>
+                    <div class="success-actions">
+                        <button class="btn btn-primary" id="downloadTicketBtn">
+                            <i class="fas fa-download"></i>
+                            Download Ticket
+                        </button>
+                        <button class="btn btn-secondary" id="viewTicketBtn">
+                            <i class="fas fa-eye"></i>
+                            View Ticket
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="style.js"></script>
+</body>
+</html>
